@@ -23,9 +23,11 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-instagram'
 gem 'fb_graph'
 gem 'twitter'
 gem 'google-api-client', :require => 'google/api_client'
+gem 'instagram'
 
 group :development, :test do
   gem 'pry-rails'

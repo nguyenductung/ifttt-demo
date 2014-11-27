@@ -9,4 +9,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     scope: "user_about_me,user_status,user_friends,user_photos,email,publish_actions"
   }
   provider :twitter, Settings.twitter.consumer_key, Settings.twitter.consumer_secret
+  provider :instagram, Settings.instagram.client_id, Settings.instagram.client_secret
 end

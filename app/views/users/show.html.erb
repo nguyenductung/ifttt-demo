@@ -1,5 +1,7 @@
-<br/><br/><br/><br/><br/>
+<br/><br/><br/>
 <div class="text-center">
+  <%= image_tag "logo.png" %>
+  <br/><br/><br/>
   <%= link_to "/auth/instagram" do %>
   <button class="btn btn-lg btn-instagram <%= connect_button_class "instagram" %>">
     <i class="fa fa-instagram"></i> | <%= current_user ? "Connect" : "Signin" %> with Instagram
@@ -15,4 +17,8 @@
     <i class="fa fa-google-plus"></i> | <%= current_user ? "Connect" : "Signin" %> with Google
   </button>
   <% end %>
+  <br/><br/>
+  <h2>Let's try some sample recipes</h2>
+  <br/><br/>
 </div>
+<br/><br/><br/>

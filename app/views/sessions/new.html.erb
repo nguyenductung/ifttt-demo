@@ -1,5 +1,14 @@
-<br/><br/><br/><br/><br/>
+<br/><br/><br/>
 <div class="text-center">
+  <%= image_tag "logo.png" %>
+  <br/><br/>
+  <h1>What is IFTTT ?</h1>
+  <h3>IFTTT is a service that lets you create powerful connections with one simple statement:</h3>
+  <br/>
+  <%= image_tag "ifttt.png" %>
+  <br/><br/>
+  <h3>Interested? Please sign in to check it out.</h3>
+  <br/><br/>
   <%= link_to "/auth/instagram" do %>
   <button class="btn btn-lg btn-instagram <%= connect_button_class "instagram" %>">
     <i class="fa fa-instagram"></i> | <%= current_user ? "Connect" : "Signin" %> with Instagram
@@ -16,3 +25,4 @@
   </button>
   <% end %>
 </div>
+<br/><br/><br/>
