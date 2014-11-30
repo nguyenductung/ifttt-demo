@@ -1,0 +1,13 @@
+<div class="text-center">
+  <h2>Available recipes</h2>
+  <br/><br/>
+</div>
+<table class="table table-hover recipes">
+  <tbody>
+    <% @m_recipes.each do |m_recipe| %>
+      <% partial = m_recipe.m_id == 1 ? "recipes/new_with_modal" : "recipes/new_without_modal" %>
+      <%= render partial: partial, locals: { m_recipe: m_recipe } %>
+    <% end %>
+  </tbody>
+</table>
+<%= render "recipes/forms/m_id_1" if @m_recipes.detect { |m_recipe| m_recipe.m_id == 1} %>

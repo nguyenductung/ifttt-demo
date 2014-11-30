@@ -1,0 +1,6 @@
+.recipes tbody tr td {
+  vertical-align: middle;
+}
+textarea {
+  width: 90%;
+}

@@ -1,0 +1,9 @@
+<% m_recipe = M::Recipe.find_by(m_id: 2) %>
+<% if current_user.connected? m_recipe.required_providers %>
+  <%= form_for Recipe.new, html: { class: "form-horizontal" } do |f| %>
+    <%= hidden_field :recipe, :m_recipe_id, value: m_recipe.id %>
+    <%= f.submit "Enable", class: "btn btn-primary" + " " + enable_button_class(m_recipe) %>
+  <% end %>
+<% else %>
+  <div class="btn btn-primary <%= enable_button_class(m_recipe) %>">Enable</div>
+<% end %>

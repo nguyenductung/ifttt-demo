@@ -1,0 +1,5 @@
+m_id,name,description,image,source,target,trigger,action,object_type,multiple
+1,post_message_to_twitter_at_specific_time,Post a message to Twitter at a specific time,time-twitter.png,time,twitter,equals,post,status,true
+2,post_instagram_photos_to_twitter,Post new Instagram photos to Twitter,instagram-twitter.png,instagram,twitter,post_photo,post,photo,false
+3,upload_instagram_photos_to_google_drive,Upload new Instagram photos to Google Drive,instagram-googledrive.png,instagram,google,post_photo,upload,photo,false
+4,upload_twitter_photos_to_google_drive,Upload new Twitter photos to Google Drive,twitter-googledrive.png,twitter,google,post_photo,upload,photo,false

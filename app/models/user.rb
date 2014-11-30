@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :authentications
+  has_many :recipes
+  has_many :m_recipes, through: :recipes
 
   class << self
     def find_or_create_with_omniauth omniauth, current_user = nil
@@ -76,6 +78,7 @@ class User < ActiveRecord::Base
           platform_id: omniauth.uid,
           username: omniauth.uid,
           access_token: omniauth.credentials.token,
+          refresh_token: omniauth.credentials.refresh_token,
           expires_at: Time.at(omniauth.credentials.expires_at.to_i)
         }
       when "twitter"
@@ -98,17 +101,32 @@ class User < ActiveRecord::Base
   end
 
   def google_client
-    access_token = authentications.find_by(provider: "google_oauth2").try(:access_token)
-    return nil unless access_token
+    authentication = authentications.find_by(provider: "google_oauth2")
+    access_token = authentication.try(:access_token)
+    refresh_token = authentication.try(:refresh_token)
+    return nil unless access_token && refresh_token
 
     @google_client ||= Google::APIClient.new
     @google_client.authorization.access_token = access_token
+
+    # refresh token
+    if authentication.expires_at <= Time.current + 5.minutes
+      @google_client.authorization.client_id = Settings.google.client_id
+      @google_client.authorization.client_secret = Settings.google.client_secret
+      @google_client.authorization.refresh_token = refresh_token
+      @google_client.authorization.grant_type = "refresh_token"
+      auth = @google_client.authorization.fetch_access_token!
+      @google_client.authorization.access_token = auth["access_token"]
+      authentication.update_attributes access_token: auth["access_token"],
+        expires_at: Time.current + auth["expires_in"].to_i
+    end
+
     @google_client
   end
 
   def twitter_client
     access_token = authentications.find_by(provider: "twitter").try(:access_token)
-    secret_token = authentications.find_by(provider: "google_oauth2").try(:secret_token)
+    secret_token = authentications.find_by(provider: "twitter").try(:secret_token)
     return nil unless access_token && secret_token
 
     @twitter_client ||= Twitter::REST::Client.new do |config|
@@ -127,5 +145,13 @@ class User < ActiveRecord::Base
     @instagram_client ||= Instagram.client
     @instagram_client.access_token = access_token
     @instagram_client
+  end
+
+  def connected? provider
+    if provider.is_a?(Array)
+      provider.all? { |p| connected? p }
+    else
+      authentications.find_by(provider: provider) ? true : false
+    end
   end
 end

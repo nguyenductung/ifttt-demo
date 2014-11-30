@@ -1,0 +1,32 @@
+<% m_recipe = M::Recipe.find_by(m_id: 1) %>
+<div class="modal fade" id="m-recipe-1" tabindex="-1" role="dialog" aria-labelledby="m-recipe-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="m-recipe-1-label"><%= m_recipe.description %></h4>
+      </div>
+      <%= form_for Recipe.new, html: { class: "form-horizontal" } do |f| %>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= label_tag :excutes_at, "Time", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.datetime_field :executes_at, class: "input-xlarge datetimepicker", required: true %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :object, "Message", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_area :object, class: "input-xlarge", rows: "5", required: true %>
+          </div>
+        </div>
+        <%= hidden_field :recipe, :m_recipe_id, value: m_recipe.id %>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "Enable", class: "btn btn-primary"%>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

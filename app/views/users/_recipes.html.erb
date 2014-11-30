@@ -1,0 +1,26 @@
+<% if @recipes.present? %>
+<div class="text-center">
+  <br/><br/>
+  <h2>Enabled recipes</h2>
+  <br/><br/>
+</div>
+<table class="table table-hover recipes">
+  <tbody>
+    <% @recipes.each do |recipe| %>
+    <tr>
+      <td width="20%"><%= image_tag recipe.m_recipe.image %></td>
+      <td width="70%">
+        <h3><%= recipe.m_recipe.description %></h3>
+        <% if recipe.m_recipe.m_id == 1 %>
+          <%= recipe.object %> (<%= recipe.executes_at %>)
+        <% end %>
+      </td>
+      <td width="10%">
+        <%= link_to "Disable", recipe_path(recipe), method: :delete,
+          data: { confirm: "Do you really want to disable this recipe ?" }, class: "btn btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

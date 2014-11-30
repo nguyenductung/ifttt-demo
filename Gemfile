@@ -29,6 +29,10 @@ gem 'twitter'
 gem 'google-api-client', :require => 'google/api_client'
 gem 'instagram'
 
+gem 'sidekiq'
+gem 'sidekiq-cron'
+gem 'sinatra', '>= 1.3.0', :require => nil
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

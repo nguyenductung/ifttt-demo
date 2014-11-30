@@ -1,0 +1,5 @@
+<script>
+  var twitterConnected = <%= current_user.connected?("twitter") ? 1 : 0 %>;
+  var instagramConnected = <%= current_user.connected?("instagram") ? 1 : 0 %>;
+  var googleConnected = <%= current_user.connected?("google_oauth2") ? 1 : 0 %>;
+</script>
