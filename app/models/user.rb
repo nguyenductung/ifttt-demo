@@ -111,8 +111,8 @@ class User < ActiveRecord::Base
 
     # refresh token
     if authentication.expires_at <= Time.current + 5.minutes
-      @google_client.authorization.client_id = Settings.google.client_id
-      @google_client.authorization.client_secret = Settings.google.client_secret
+      @google_client.authorization.client_id = ENV["GOOGLE_CLIENT_ID"]
+      @google_client.authorization.client_secret = ENV["GOOGLE_CLIENT_SECRET"]
       @google_client.authorization.refresh_token = refresh_token
       @google_client.authorization.grant_type = "refresh_token"
       auth = @google_client.authorization.fetch_access_token!
@@ -130,8 +130,8 @@ class User < ActiveRecord::Base
     return nil unless access_token && secret_token
 
     @twitter_client ||= Twitter::REST::Client.new do |config|
-      config.consumer_key = Settings.twitter.consumer_key
-      config.consumer_secret = Settings.twitter.consumer_secret
+      config.consumer_key = ENV["TWITTER_CONSUMER_KEY"]
+      config.consumer_secret = ENV["TWITTER_CONSUMER_SECRET"]
     end
     @twitter_client.access_token = access_token
     @twitter_client.access_token_secret = secret_token
