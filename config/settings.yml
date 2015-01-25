@@ -1,4 +1,5 @@
+default_profile_image: /photo/profile_image/default.jpg
 googledrive:
   folder:
-    instagram: "IFTTT Instagram"
-    twitter: "IFTTT Twitter"
+    instagram: IFTTT Instagram
+    twitter: IFTTT Twitter

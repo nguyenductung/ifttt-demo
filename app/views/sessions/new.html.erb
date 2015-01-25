@@ -7,7 +7,7 @@
   <br/>
   <%= image_tag "ifttt.png" %>
   <br/><br/>
-  <h3>Interested? Please sign in to try it out.</h3>
+  <h3>Interested? Sign in to try out.</h3>
   <br/><br/>
   <%= link_to "/auth/instagram" do %>
   <button class="btn btn-lg btn-instagram <%= connect_button_class "instagram" %>">
@@ -22,6 +22,11 @@
   <%= link_to "/auth/google_oauth2" do %>
   <button class="btn btn-lg btn-google-plus <%= connect_button_class "google_oauth2" %>">
     <i class="fa fa-google-plus"></i> | <%= current_user ? "Connect" : "Signin" %> with Google
+  </button>
+  <% end %>
+  <%= link_to "/auth/dropbox_oauth2" do %>
+  <button class="btn btn-lg btn-dropbox <%= connect_button_class "dropbox_oauth2" %>">
+    <i class="fa fa-dropbox"></i> | <%= current_user ? "Connect" : "Signin" %> with Dropbox
   </button>
   <% end %>
 </div>

@@ -10,7 +10,7 @@ module ApplicationHelper
   def enable_button_class m_recipe
     classes = []
     [m_recipe.source, m_recipe.target].each do |provider|
-      if provider.in? %w( twitter instagram google )
+      if provider.in? %w( twitter instagram google dropbox )
         classes << "#{provider}-required"
       end
     end

@@ -57,6 +57,8 @@ GEM
     commonjs (0.2.7)
     connection_pool (2.1.0)
     debug_inspector (0.0.2)
+    dropbox-sdk (1.6.4)
+      json
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -132,6 +134,8 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-dropbox-oauth2 (0.2.0)
+      omniauth-oauth2
     omniauth-facebook (2.0.0)
       omniauth-oauth2 (~> 1.2)
     omniauth-google-oauth2 (0.2.6)
@@ -282,6 +286,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-will_paginate
   coffee-rails (~> 4.0.0)
+  dropbox-sdk
   fb_graph
   google-api-client
   instagram
@@ -290,6 +295,7 @@ DEPENDENCIES
   less-rails
   mysql2
   omniauth
+  omniauth-dropbox-oauth2
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-instagram
