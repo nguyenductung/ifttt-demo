@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
         end
         user
       end
-    # rescue
+    rescue
     end
 
     private
@@ -46,6 +46,11 @@ class User < ActiveRecord::Base
           provider: omniauth.provider,
           username: omniauth.info.nickname
         }
+      when "dropbox_oauth2"
+        {
+          provider: omniauth.provider,
+          username: omniauth.uid
+        }
       end
     end
 
@@ -66,6 +71,12 @@ class User < ActiveRecord::Base
         {
           name: omniauth.info.name,
           photo: omniauth.info.image
+        }
+      when "dropbox_oauth2"
+        {
+          name: omniauth.info.name,
+          photo: Settings.default_profile_image,
+          mail: omniauth.info.email
         }
       end
     end
@@ -94,6 +105,13 @@ class User < ActiveRecord::Base
           provider: omniauth.provider,
           platform_id: omniauth.uid,
           username: omniauth.info.nickname,
+          access_token: omniauth.credentials.token
+        }
+      when "dropbox_oauth2"
+        {
+          provider: omniauth.provider,
+          platform_id: omniauth.uid,
+          username: omniauth.uid,
           access_token: omniauth.credentials.token
         }
       end
@@ -145,6 +163,13 @@ class User < ActiveRecord::Base
     @instagram_client ||= Instagram.client
     @instagram_client.access_token = access_token
     @instagram_client
+  end
+
+  def dropbox_client
+    access_token = authentications.find_by(provider: "dropbox_oauth2").try(:access_token)
+    return nil unless access_token
+
+    DropboxClient.new(access_token)
   end
 
   def connected? provider

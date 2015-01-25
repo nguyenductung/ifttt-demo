@@ -18,6 +18,11 @@
     <i class="fa fa-google-plus"></i> | <%= current_user ? "Connect" : "Signin" %> with Google
   </button>
   <% end %>
+  <%= link_to "/auth/dropbox_oauth2" do %>
+  <button class="btn btn-lg btn-dropbox <%= connect_button_class "dropbox_oauth2" %>">
+    <i class="fa fa-dropbox"></i> | <%= current_user ? "Connect" : "Signin" %> with Dropbox
+  </button>
+  <% end %>
   <br/><br/>
 </div>
 <%= render "m_recipes" %>
