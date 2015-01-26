@@ -83,6 +83,11 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
+    google_drive (1.0.0)
+      google-api-client (>= 0.7.0)
+      nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
+      oauth (>= 0.3.6)
+      oauth2 (>= 0.5.0)
     hashie (3.3.2)
     hike (1.2.3)
     hitimes (1.2.2)
@@ -118,12 +123,15 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_portile (0.6.2)
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.17)
     naught (1.0.0)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     oauth (0.4.7)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
@@ -289,6 +297,7 @@ DEPENDENCIES
   dropbox-sdk
   fb_graph
   google-api-client
+  google_drive
   instagram
   jbuilder (~> 2.0)
   jquery-rails

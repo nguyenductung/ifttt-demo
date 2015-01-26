@@ -1,2 +1,2 @@
-require 'google_drive'
+require 'ifttt/google_drive'
 require 'dropbox_sdk'

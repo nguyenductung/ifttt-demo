@@ -30,6 +30,7 @@ gem 'twitter'
 gem 'google-api-client', :require => 'google/api_client'
 gem 'instagram'
 gem 'dropbox-sdk'
+gem 'google_drive'
 
 gem 'sidekiq'
 gem 'sidekiq-cron'
