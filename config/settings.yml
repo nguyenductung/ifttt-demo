@@ -3,3 +3,9 @@ googledrive:
   folder:
     instagram: IFTTT Instagram
     twitter: IFTTT Twitter
+  sheet:
+    twitter: Tweets
+dropbox:
+  folder:
+    instagram: IFTTT Instagram
+    twitter: IFTTT Twitter

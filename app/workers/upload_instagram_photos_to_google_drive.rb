@@ -22,7 +22,7 @@ class UploadInstagramPhotosToGoogleDrive
         recipe.update_attributes last_executed_at: Time.current
         photos.reverse.each do |photo|
           begin
-            GoogleDrive.upload_photo google, open(photo[:url]), photo[:created_time], photo[:caption],
+            IFTTT::GoogleDrive.upload_photo google, open(photo[:url]), photo[:created_time], photo[:caption],
               Settings.googledrive.folder.instagram
           rescue => e
             Rails.logger.error e.inspect
