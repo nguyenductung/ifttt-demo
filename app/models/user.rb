@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
       when "google_oauth2"
         {
           provider: omniauth.provider,
-          username: omniauth.uid
+          username: omniauth.uid.to_s
         }
       when "twitter"
         {
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
       when "dropbox_oauth2"
         {
           provider: omniauth.provider,
-          username: omniauth.uid
+          username: omniauth.uid.to_s
         }
       end
     end
@@ -110,8 +110,8 @@ class User < ActiveRecord::Base
       when "dropbox_oauth2"
         {
           provider: omniauth.provider,
-          platform_id: omniauth.uid,
-          username: omniauth.uid,
+          platform_id: omniauth.uid.to_s,
+          username: omniauth.uid.to_s,
           access_token: omniauth.credentials.token
         }
       end
